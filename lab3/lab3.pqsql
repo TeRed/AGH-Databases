@@ -157,7 +157,82 @@ WHERE (koszt BETWEEN 0.15 AND 0.24) OR
     EXCEPT
 (SELECT idczekoladki FROM zawartosc);
 
+-- 3.6
 
+select idmeczu, gospodarze[1] + gospodarze[2] + gospodarze[3]
+        + coalesce(gospodarze[4], 0) + coalesce(gospodarze[5], 0) as "Suma gospodarzy",
+        goscie[1] + goscie[2] + goscie[3]
+        + coalesce(goscie[4], 0) + coalesce(goscie[5], 0) as "Suma gosci"
+from siatkowka.statystyki;
 
+select idmeczu, gospodarze[1] + gospodarze[2] + gospodarze[3]
+        + gospodarze[4] + gospodarze[5] as "Suma gospodarzy",
+        goscie[1] + goscie[2] + goscie[3]
+        + goscie[4]+ goscie[5] as "Suma gosci"
+from siatkowka.statystyki
+where gospodarze[5] IS NOT NULL AND
+        GREATEST(goscie[5], gospodarze[5]) > 15;
 
+select
+idmeczu, concat(
+(case when (gospodarze[1] > goscie[1]) then 1 else 0 end +
+case when (gospodarze[2] > goscie[2]) then 1 else 0 end +
+case when (gospodarze[3] > goscie[3]) then 1 else 0 end +
+case when (gospodarze[4] > goscie[5]) then 1 else 0 end +
+case when (gospodarze[5] > goscie[5]) then 1 else 0 end),
+':',
+(case when (goscie[1] > gospodarze[1]) then 1 else 0 end +
+case when (goscie[2] > gospodarze[2]) then 1 else 0 end +
+case when (goscie[3] > gospodarze[3]) then 1 else 0 end +
+case when (goscie[4] > gospodarze[4]) then 1 else 0 end +
+case when (goscie[5] > gospodarze[5]) then 1 else 0 end))
+from siatkowka.statystyki;
 
+select idmeczu, gospodarze[1] + gospodarze[2] + gospodarze[3]
+        + coalesce(gospodarze[4], 0) + coalesce(gospodarze[5], 0) as "Suma gospodarzy",
+        goscie[1] + goscie[2] + goscie[3]
+        + coalesce(goscie[4], 0) + coalesce(goscie[5], 0) as "Suma gosci"
+from siatkowka.statystyki
+where (gospodarze[1] + gospodarze[2] + gospodarze[3]
+        + coalesce(gospodarze[4], 0) + coalesce(gospodarze[5], 0)) > 100;
+
+select idmeczu, gospodarze[1] as "Gospodarze 1st",
+        gospodarze[1] + gospodarze[2] + gospodarze[3]
+        + coalesce(gospodarze[4], 0) + coalesce(gospodarze[5], 0) as "Suma gospodarzy"
+from siatkowka.statystyki
+where sqrt(gospodarze[1]) < log(2, (gospodarze[1] + gospodarze[2] + gospodarze[3]
+        + coalesce(gospodarze[4], 0) + coalesce(gospodarze[5], 0)));
+
+-- 3.7
+
+\H
+
+\echo <!doctype html>
+
+\echo <html lang="en">
+\echo <head>
+  \echo <title>HTML</title>
+\echo </head>
+
+\echo <body>
+select idmeczu, gospodarze[1] + gospodarze[2] + gospodarze[3]
+    + coalesce(gospodarze[4], 0) + coalesce(gospodarze[5], 0) as "Suma gospodarzy",
+    goscie[1] + goscie[2] + goscie[3]
+    + coalesce(goscie[4], 0) + coalesce(goscie[5], 0) as "Suma gosci"
+from siatkowka.statystyki;
+\echo </body>
+\echo </html>
+
+-- 3.8
+
+\a
+\pset fieldsep ,
+\t
+
+select idmeczu, gospodarze[1] + gospodarze[2] + gospodarze[3]
+        + gospodarze[4] + gospodarze[5] as "Suma gospodarzy",
+        goscie[1] + goscie[2] + goscie[3]
+        + goscie[4]+ goscie[5] as "Suma gosci"
+from siatkowka.statystyki
+where gospodarze[5] IS NOT NULL AND
+        GREATEST(goscie[5], gospodarze[5]) > 15;
