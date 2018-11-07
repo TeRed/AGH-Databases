@@ -171,3 +171,35 @@ FROM    pudelka p JOIN
         zawartosc z USING(idpudelka) JOIN
         czekoladki c USING(idczekoladki)
 WHERE   c.nadzienie IS NULL;
+
+-- 4.6
+
+SELECT c.idczekoladki, c.nazwa, c.koszt
+FROM czekoladki c JOIN czekoladki c2 ON
+c.koszt > c2.koszt AND c2.idczekoladki = 'd08';
+
+SELECT DISTINCT k.nazwa
+FROM    (klienci k
+        JOIN zamowienia z USING(idklienta)
+        JOIN artykuly a USING(idzamowienia)
+        JOIN pudelka p USING(idpudelka))
+        JOIN
+        (klienci k2
+        JOIN zamowienia z2 USING(idklienta)
+        JOIN artykuly a2 USING(idzamowienia)
+        JOIN pudelka p2 USING(idpudelka))
+ON p.idpudelka = p2.idpudelka
+AND k2.nazwa = 'Górka Alicja';
+
+SELECT DISTINCT k.nazwa, k.miejscowosc
+FROM    (klienci k
+        JOIN zamowienia z USING(idklienta)
+        JOIN artykuly a USING(idzamowienia)
+        JOIN pudelka p USING(idpudelka))
+        JOIN
+        (klienci k2
+        JOIN zamowienia z2 USING(idklienta)
+        JOIN artykuly a2 USING(idzamowienia)
+        JOIN pudelka p2 USING(idpudelka))
+ON p.idpudelka = p2.idpudelka
+AND k2.miejscowosc = 'Katowice';
