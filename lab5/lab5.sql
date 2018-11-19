@@ -119,15 +119,25 @@ GROUP BY a.idpudelka;
 
 -- 5.5
 
--- SELECT COUNT(*)
--- FROM zamowienia
--- GROUP BY datarealizacji
--- ORDER BY 2 DESC;
+SELECT count(*), date_part('quarter', datarealizacji), date_part('year', datarealizacji)
+FROM zamowienia
+GROUP BY 3, 2;
 
--- SELECT date_part('month', datarealizacji), COUNT(*)
--- FROM zamowienia
--- GROUP BY date_part('month', datarealizacji)
--- ORDER BY 2 DESC;
+SELECT COUNT(*), date_part('year', datarealizacji), date_part('month', datarealizacji)
+FROM zamowienia
+GROUP BY 2, 3
+ORDER BY 1 DESC;
+
+SELECT COUNT(*), date_part('year', datarealizacji), date_part('week', datarealizacji)
+FROM zamowienia
+GROUP BY 2, 3
+ORDER BY 1 DESC;
+
+SELECT COUNT(*), k.miejscowosc
+FROM    zamowienia
+        JOIN klienci k USING(idklienta)
+GROUP BY k.miejscowosc
+ORDER BY 1;
 
 -- 5.6
 
@@ -147,3 +157,26 @@ FROM    pudelka p
         JOIN zawartosc z USING(idpudelka)
         JOIN czekoladki c USING(idczekoladki)
 GROUP BY p.idpudelka;
+
+SELECT  SUM(Zysk.zysk * a.sztuk)
+FROM    artykuly a
+        JOIN (
+            SELECT p.idpudelka, p.cena - SUM(c.koszt * z.sztuk) AS Zysk
+            FROM    pudelka p
+                    JOIN zawartosc z USING(idpudelka)
+                    JOIN czekoladki c USING(idczekoladki)
+            GROUP BY p.idpudelka
+        ) AS Zysk USING(idpudelka);
+
+SELECT SUM(Zysk.Zysk)
+FROM (
+    SELECT (p.cena - SUM(c.koszt * z.sztuk)) * p.stan AS Zysk
+    FROM    pudelka p
+            JOIN zawartosc z USING(idpudelka)
+            JOIN czekoladki c USING(idczekoladki)
+    GROUP BY p.idpudelka
+) AS Zysk;
+
+-- 5.8
+
+-- TODO
