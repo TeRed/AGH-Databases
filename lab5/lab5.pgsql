@@ -179,4 +179,8 @@ FROM (
 
 -- 5.8
 
--- TODO
+SELECT
+        ROW_NUMBER() OVER (ORDER BY p.idpudelka),
+        p.idpudelka
+FROM
+        pudelka p;
