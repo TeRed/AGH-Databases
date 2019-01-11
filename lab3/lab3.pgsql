@@ -60,7 +60,7 @@ WHERE nazwa SIMILAR TO '%(O|o)rzech%';
 
 SELECT idCzekoladki, nazwa, czekolada, orzechy, nadzienie
 FROM czekoladki
-WHERE nazwa SIMILAR TO 'S%m%';
+WHERE nazwa SIMILAR TO 'S%_m%_';
 
 SELECT idCzekoladki, nazwa, czekolada, orzechy, nadzienie
 FROM czekoladki
@@ -170,8 +170,9 @@ select idmeczu, gospodarze[1] + gospodarze[2] + gospodarze[3]
         goscie[1] + goscie[2] + goscie[3]
         + goscie[4]+ goscie[5] as "Suma gosci"
 from siatkowka.statystyki
-where gospodarze[5] IS NOT NULL AND
-        GREATEST(goscie[5], gospodarze[5]) > 15;
+where
+    gospodarze[5] IS NOT NULL AND
+    GREATEST(goscie[5], gospodarze[5]) > 15;
 
 select
 idmeczu, concat(

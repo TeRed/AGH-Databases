@@ -115,7 +115,8 @@ ORDER BY 2;
 SELECT a.idpudelka, COUNT(a.idpudelka)
 FROM    zamowienia z
         JOIN artykuly a USING(idzamowienia)
-GROUP BY a.idpudelka;
+GROUP BY a.idpudelka
+ORDER BY 2;
 
 -- 5.5
 

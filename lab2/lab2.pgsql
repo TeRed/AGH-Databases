@@ -10,8 +10,14 @@ ORDER BY miejscowosc DESC, nazwa;
 
 SELECT *
 FROM klienci
-WHERE miejscowosc = 'Kraków' OR
-		 miejscowosc = 'Warszawa'
+WHERE
+	miejscowosc = 'Kraków' OR
+	miejscowosc = 'Warszawa'
+ORDER BY miejscowosc DESC, nazwa;
+
+SELECT *
+FROM klienci
+WHERE miejscowosc IN ('Kraków', 'Warszawa')
 ORDER BY miejscowosc DESC, nazwa;
 
 SELECT *
@@ -31,13 +37,15 @@ WHERE masa > 20;
 
 SELECT nazwa, masa, koszt
 FROM czekoladki
-WHERE masa > 20 AND
-	  koszt > 0.25;
+WHERE
+	masa > 20 AND
+	koszt > 0.25;
 
 SELECT nazwa, masa, koszt * 100 AS koszt
 FROM czekoladki
-WHERE masa > 20 AND
-	  koszt > 0.25;
+WHERE
+	masa > 20 AND
+	koszt > 0.25;
 
 SELECT nazwa, czekolada, nadzienie, orzechy
 FROM czekoladki
@@ -90,18 +98,21 @@ WHERE orzechy IS NULL;
 
 SELECT idczekoladki, nazwa, czekolada, orzechy, nadzienie
 FROM czekoladki
-WHERE orzechy IS NOT NULL OR
-	  nadzienie IS NOT NULL;
+WHERE
+	orzechy IS NOT NULL OR
+	nadzienie IS NOT NULL;
 
 SELECT idczekoladki, nazwa, czekolada, orzechy, nadzienie
 FROM czekoladki
-WHERE czekolada IN ('mleczna', 'biała') AND
-	  orzechy IS NULL;
+WHERE
+	czekolada IN ('mleczna', 'biała') AND
+	orzechy IS NULL;
 
 SELECT idczekoladki, nazwa, czekolada, orzechy, nadzienie
 FROM czekoladki
-WHERE czekolada NOT IN ('mleczna', 'biała') AND
-	  (orzechy IS NOT NULL OR nadzienie IS NOT NULL);
+WHERE
+	czekolada NOT IN ('mleczna', 'biała') AND
+	(orzechy IS NOT NULL OR nadzienie IS NOT NULL);
 
 SELECT idczekoladki, nazwa, czekolada, orzechy, nadzienie
 FROM czekoladki
@@ -113,40 +124,47 @@ WHERE nadzienie IS NULL;
 
 SELECT idczekoladki, nazwa, czekolada, orzechy, nadzienie
 FROM czekoladki
-WHERE nadzienie IS NULL AND
-	  orzechy IS NULL;
+WHERE
+	nadzienie IS NULL AND
+	orzechy IS NULL;
 
 SELECT idczekoladki, nazwa, czekolada, orzechy, nadzienie
 FROM czekoladki
-WHERE czekolada NOT IN ('mleczna', 'biała') AND
-	  nadzienie IS NOT NULL;
+WHERE
+	czekolada NOT IN ('mleczna', 'biała') AND
+	nadzienie IS NULL;
 
 -- 2.6
 
 SELECT nazwa, masa, koszt
 FROM czekoladki
-WHERE masa BETWEEN 15 AND 24 OR
-      koszt BETWEEN 0.15 AND 0.24;
+WHERE
+	masa BETWEEN 15 AND 24 OR
+    koszt BETWEEN 0.15 AND 0.24;
 
 SELECT nazwa, masa, koszt
 FROM czekoladki
-WHERE (masa BETWEEN 15 AND 24 AND
-      koszt BETWEEN 0.15 AND 0.24) OR
-      (masa BETWEEN 25 AND 35 AND
-      koszt BETWEEN 0.25 AND 0.35);
+WHERE
+	(masa BETWEEN 15 AND 24 AND
+    koszt BETWEEN 0.15 AND 0.24) OR
+    (masa BETWEEN 25 AND 35 AND
+    koszt BETWEEN 0.25 AND 0.35);
 
 SELECT nazwa, masa, koszt
 FROM czekoladki
-WHERE masa BETWEEN 15 AND 24 AND
-      koszt BETWEEN 0.15 AND 0.24;
+WHERE
+	masa BETWEEN 15 AND 24 AND
+    koszt BETWEEN 0.15 AND 0.24;
 
 SELECT nazwa, masa, koszt
 FROM czekoladki
-WHERE masa BETWEEN 25 AND 35 AND
-      koszt NOT BETWEEN 0.25 AND 0.35;
+WHERE
+	masa BETWEEN 25 AND 35 AND
+    koszt NOT BETWEEN 0.25 AND 0.35;
 
 SELECT nazwa, masa, koszt
 FROM czekoladki
-WHERE (masa BETWEEN 25 AND 35) AND
-      (koszt NOT BETWEEN 0.15 AND 0.24) AND
-      (koszt NOT BETWEEN 0.25 AND 0.35);
+WHERE
+	(masa BETWEEN 25 AND 35) AND
+    (koszt NOT BETWEEN 0.15 AND 0.24) AND
+    (koszt NOT BETWEEN 0.25 AND 0.35);

@@ -31,9 +31,10 @@ WHERE k.ulica LIKE '%/%';
 
 SELECT k.miejscowosc, z.idzamowienia, z.datarealizacji
 FROM klienci k NATURAL JOIN zamowienia z
-WHERE   k.miejscowosc = 'Kraków' AND
-        date_part('year', z.datarealizacji) = 2013 AND
-        date_part('month', z.datarealizacji) = 11;
+WHERE
+    k.miejscowosc = 'Kraków' AND
+    date_part('year', z.datarealizacji) = 2013 AND
+    date_part('month', z.datarealizacji) = 11;
 
 -- 4.3
 
@@ -132,51 +133,60 @@ FROM    pudelka p JOIN
         czekoladki c USING(idczekoladki)
 WHERE   c.nadzienie = 'truskawki';
 
-
--- źle --> completely
-SELECT  p.nazwa, p.opis, p.cena, c.nazwa, c.czekolada
-FROM    pudelka p JOIN
-        zawartosc USING(idpudelka) JOIN
-        czekoladki c USING(idczekoladki)
-WHERE   c.czekolada != 'gorzka' OR c.czekolada IS NULL;
+(SELECT DISTINCT p.nazwa, p.opis, p.cena
+FROM
+    pudelka p
+    JOIN zawartosc za USING(idpudelka)
+    JOIN czekoladki c USING(idczekoladki))
+    EXCEPT
+(SELECT DISTINCT p.nazwa, p.opis, p.cena
+FROM
+    pudelka p
+    JOIN zawartosc za USING(idpudelka)
+    JOIN czekoladki c USING(idczekoladki)
+WHERE c.czekolada = 'gorzka');
 
 SELECT  p.nazwa, p.opis, p.cena, c.nazwa, z.sztuk
-FROM    pudelka p JOIN
-        zawartosc z USING(idpudelka) JOIN
-        czekoladki c USING(idczekoladki)
-WHERE   c.nazwa = 'Gorzka truskawkowa' AND z.sztuk >= 3;
+FROM
+    pudelka p JOIN
+    zawartosc z USING(idpudelka) JOIN
+    czekoladki c USING(idczekoladki)
+WHERE c.nazwa = 'Gorzka truskawkowa' AND z.sztuk >= 3;
 
--- po poprawy jak wyej -> uwaga na stronie szpyrki
--- SELECT  p.nazwa, p.opis, p.cena, c.nazwa, c.orzechy
--- FROM    pudelka p JOIN
---         zawartosc z USING(idpudelka) LEFT JOIN
---         czekoladki c ON c.idczekoladki = z.idczekoladki
--- WHERE   c.orzechy IS NULL;
-
--- -- Alternative
--- SELECT DISTINCT p.nazwa
--- FROM    pudelka p JOIN
---         zawartosc z USING(idpudelka) JOIN
---         czekoladki c ON c.idczekoladki = z.idczekoladki
--- WHERE   c.orzechy IS NULL;
+(SELECT DISTINCT p.nazwa, p.opis, p.cena
+FROM
+    pudelka p
+    JOIN zawartosc za USING(idpudelka)
+    JOIN czekoladki c USING(idczekoladki))
+    EXCEPT
+(SELECT DISTINCT p.nazwa, p.opis, p.cena
+FROM
+    pudelka p
+    JOIN zawartosc za USING(idpudelka)
+    JOIN czekoladki c USING(idczekoladki)
+WHERE c.orzechy IS NOT NULL);
 
 SELECT  p.nazwa, p.opis, p.cena, c.nazwa
-FROM    pudelka p JOIN
-        zawartosc z USING(idpudelka) JOIN
-        czekoladki c USING(idczekoladki)
-WHERE   c.nazwa = 'Gorzka truskawkowa';
+FROM
+    pudelka p JOIN
+    zawartosc z USING(idpudelka) JOIN
+    czekoladki c USING(idczekoladki)
+WHERE c.nazwa = 'Gorzka truskawkowa';
 
 SELECT DISTINCT p.nazwa, p.opis, p.cena, c.nazwa, c.nadzienie
-FROM    pudelka p JOIN
-        zawartosc z USING(idpudelka) JOIN
-        czekoladki c USING(idczekoladki)
-WHERE   c.nadzienie IS NULL;
+FROM
+    pudelka p JOIN
+    zawartosc z USING(idpudelka) JOIN
+    czekoladki c USING(idczekoladki)
+WHERE c.nadzienie IS NULL;
 
 -- 4.6
 
 SELECT c.idczekoladki, c.nazwa, c.koszt
-FROM czekoladki c JOIN czekoladki c2 ON
-c.koszt > c2.koszt AND c2.idczekoladki = 'd08';
+FROM
+    czekoladki c
+    JOIN czekoladki c2 ON
+    c2.idczekoladki = 'd08' AND c.koszt > c2.koszt;
 
 SELECT DISTINCT k.nazwa
 FROM    (klienci k
