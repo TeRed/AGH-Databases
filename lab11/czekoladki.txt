@@ -1,0 +1,41 @@
+b01,Płomienna ekstaza,gorzka,łuskane,krem,"Orzechy w kremie, zatopione w gorzkiej czekoladzie.",0.30,20
+b02,Gorzka jagodowa,gorzka,,jagody,Smakowite górskie jagody w czekoladzie.,0.25,25
+b03,Marcepanowe listki,gorzka,,marcepan,Marcepany w kształcie liści dębu oblewane gorzką czekoladą.,0.40,12
+b04,Gorzka truskawkowa,gorzka,,truskawki,"Truskawki w gorzkiej czekoladzie, wyśmienite.",0.23,20
+b05,Gorzka malinowa,gorzka,,maliny,"Maliny zrywane na bezludnych wyspach, w polewie czekoladowej.",0.25,20
+b06,Gorzka z marmoladą,gorzka,,marmolada,Marmolada w polewie czekoladowej - prawdziwie brytyjski smakołyk.,0.17,25
+b07,Gorzka z wiśniami,gorzka,,wiśnie,Ulubione wiśnie królowej Anny zatopione w czekoladzie.,0.26,25
+b08,Gorzkie orzechy,gorzka,laskowe,,Orzechy laskowe w czekoladzie.,0.24,20
+d01,Migdałowy smak,ciemna,migdały,,"Całe migdały, ręcznie topione w czekoladzie.",0.30,15
+d02,Serce na dłoni,ciemna,,krem wiśniowy,Ciemna czekolada o sercu z kremu wiśniowego.,0.32,25
+d03,Potęga orzechów,ciemna,łuskane,,Ogromne orzechy ręcznie umieszczane w czekoladzie.,0.30,15
+d04,Migdalowa ambrozja,ciemna,migdały,amaretto,Migdały zatapiane w amaretto.,0.44,25
+d06,Smak orzechow laskowych,ciemna,laskowe,,"Całe orzechy laskowe, ręcznie topione w czekoladzie.",0.21,10
+d07,Wiśniowa klasyczna,ciemna,,wiśnie,Wiśnie w czekoladzie.,0.28,24
+d08,Czekoladowe kiwi,ciemna,brazylijskie,,Orzechy brazylijskie na czekoladzie tworzące wspaniałą kompozycję wzorowana na owocu kiwi.,0.29,30
+d09,Amerykańska piekność,ciemna,,,Twarda czekolada w kształcie amerykanskich piękności.,0.24,30
+d11,Marcepanowe delicje,ciemna,,marcepan,Smakowity marcepan w gorzkiej czekoladzie.,0.38,30
+f01,Twarda kremowa włoska,twarda,włoskie,krem,Słodziutki krem z orzechami włoskimi.,0.19,25
+f02,Twarda kremowa pistacjowa,twarda,pistacjowe,krem,Słodziutki krem z orzechami pistacjowymi.,0.21,25
+m01,Słodkie truskawki,mleczna,,truskawki,Truskawki oblewane mleczną czekoladą.,0.20,25
+m02,Smak macadamia,mleczna,macadamia,,"Całe macadamia, ręcznie umieszczane w mlecznej czekoladzie.",0.40,20
+m03,Smak pistacji,mleczna,Pistacjowe,,"Całe pistacjowe orzechy, ręcznie umieszczane w mlecznej czekoladzie.",0.30,12
+m04,Rozkosz kremu orzechowego,mleczna,,krem orzechowy,Delikatny krem orzechowy robiony z senegalskich orzeszków w mlecznej czekoladzie.,0.21,12
+m05,Marcepanki,mleczna,,marcepan,Marcepan oblewany mleczną czekoladą.,0.32,35
+m06,Serce kochanka,mleczna,,krem wiśniowy,Czekoladki mleczne w kształcie serc z nadzieniem wiśniowym.,0.25,35
+m07,Jabłkowe amory,mleczna,migdały,,Mleczne czekoladki w kształcie jabłuszek z listkami z migdałów.,0.24,25
+m08,Marcepanowy klon,mleczna,,marcepan,Marcepan w kształcie listków klonu z mleczną czekoladą.,0.37,25
+m09,Słodkie maliny,mleczna,,maliny,Maliny oblewane mleczną czekoladą.,0.26,15
+m10,Niezapominajki,mleczna,,jagody,Niezapomniana mleczna czekolada nadziewana jagodami.,0.19,15
+m11,Słodkie wiśnie,mleczna,,wiśnie,Wiśnie w polewie z mlecznej czekolady.,0.27,20
+m12,Słodkie jagody,mleczna,,jagody,Jagody osładzane mleczną czekoladą.,0.25,20
+m13,Słodka marmolada,mleczna,,marmolada,Mleczna czekolada z nadzieniem z pomarańczowej marmolady.,0.18,30
+m14,Wiśnie z orzechami,mleczna,laskowe,krem wiśniowy,Świetne orzechy laskowe przykryte kremem wiśniowym i mleczną czekoladą.,0.26,30
+m15,Tropikalna palma,mleczna,,kokosy,Palma z mlecznej czekolady z kokosami.,0.23,25
+m16,Cud marcepanu,mleczna,,marcepan,"Marcepan w kształcie migdałów z czekoladowym ""Mniam mniam"".",0.33,25
+m17,Amaretto z orzechali,mleczna,laskowe,amaretto,Orzechy laskowe z amaretto oblewane mleczną czekoladą.,0.36,25
+m18,Orzechy w kremie,mleczna,laskowe,krem,Orzechy laskowe z kremem oblewane mleczną czekoladą.,0.33,20
+w01,Marcepanowa jaskółka,biała,,marcepan,Marcepanowe jaskółki o skrzydłach z mlecznej czekolady.,0.34,20
+w02,Biale lilie,biała,,,Elegancka biała czekolada formowana w kształcie lilii.,0.27,25
+w03,Zlamane serce,biała,pekan,,Dwie połówki pekanowego serca z białej czekolady.,0.30,25
+w06,Smak Brazylii,biała,brazylijskie,,"Brazylijskie orzechy, ręcznie umieszczane w białej czekoladzie.",0.28,35
