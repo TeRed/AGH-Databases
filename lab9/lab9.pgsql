@@ -1,9 +1,15 @@
-CREATE SCHEMA kwiaciarnia;
-SET search_path to kwiaciarnia;
+DROP TABLE kwiaciarnia.klienci;
+DROP TABLE kwiaciarnia.kompozycje;
+DROP TABLE kwiaciarnia.odbiorcy;
+DROP TABLE kwiaciarnia.zamowienia;
+DROP TABLE kwiaciarnia.historia;
+DROP TABLE kwiaciarnia.zapotrzebowanie;
 
-CREATE TABLE klienci (
+begin;
+
+CREATE TABLE kwiaciarnia.klienci (
     idklienta varchar(10) PRIMARY KEY,
-    haslo varchar(10) CHECK(LENGTH(haslo) >= 4),
+    haslo varchar(10) CHECK(LENGTH(haslo) >= 4) NOT NULL,
     nazwa varchar(40) NOT NULL,
     miasto varchar(40) NOT NULL,
     kod char(6) NOT NULL,
@@ -15,7 +21,7 @@ CREATE TABLE klienci (
     regon char(9)
 );
 
-CREATE TABLE kompozycje (
+CREATE TABLE kwiaciarnia.kompozycje (
     idkompozycji char(5) PRIMARY KEY,
     nazwa varchar(40) NOT NULL,
     opis varchar(100),
@@ -24,7 +30,7 @@ CREATE TABLE kompozycje (
     stan int
 );
 
-CREATE TABLE odbiorcy (
+CREATE TABLE kwiaciarnia.odbiorcy (
     idodbiorcy serial PRIMARY KEY,
     nazwa varchar(40) NOT NULL,
     miasto varchar(40) NOT NULL,
@@ -32,7 +38,7 @@ CREATE TABLE odbiorcy (
     adres varchar(40) NOT NULL
 );
 
-CREATE TABLE zamowienia (
+CREATE TABLE kwiaciarnia.zamowienia (
     idzamowienia int PRIMARY KEY,
     idklienta varchar(10) REFERENCES klienci(idklienta) NOT NULL,
     idodbiorcy int REFERENCES odbiorcy(idodbiorcy) NOT NULL,
@@ -43,7 +49,7 @@ CREATE TABLE zamowienia (
     uwagi varchar(200)
 );
 
-CREATE TABLE historia (
+CREATE TABLE kwiaciarnia.historia (
     idzamowienia int PRIMARY KEY,
     idklienta varchar(10),
     idkompozycji char(5),
@@ -51,7 +57,9 @@ CREATE TABLE historia (
     termin date
 );
 
-CREATE TABLE zapotrzebowanie (
+CREATE TABLE kwiaciarnia.zapotrzebowanie (
     idkompozycji char(5) PRIMARY KEY REFERENCES kompozycje(idkompozycji),
     data date
 );
+
+commit;
